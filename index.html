@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+        .hero {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .hero h1 {
+            font-size: 50px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ff4b5c;
+        }
+        .hero h1 span {
+            color: #ffd700;
+        }
+        textarea {
+            width: 100%;
+            max-width: 700px;
+            height: 200px;
+            background: #333;
+            color: #fff;
+            font-size: 16px;
+            border: 2px solid #555;
+            outline: none;
+            padding: 15px;
+            border-radius: 10px;
+            resize: none;
+            margin-bottom: 20px;
+        }
+        textarea::placeholder {
+            font-size: 16px;
+            color: #bbb;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            background-color: #ff4b5c;
+            color: #ffffff;
+            font-size: 18px;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e04354;
+        }
+        button img {
+            width: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+       <h1>Text To Speech <span>Converter</span></h1>
+       <textarea placeholder="Enter your text here..." name="" id=""></textarea>
+       <div class="row">
+        <button><img src="play.png" alt="">Click To Listen</button>
+       </div>
+    </div>
+</body>
+<script>
+    let speech = new SpeechSynthesisUtterance();
+
+    document.querySelector("button").addEventListener("click", () => {
+        speech.text = document.querySelector("textarea").value;
+        window.speechSynthesis.speak(speech);
+    });
+</script>
+</html>
